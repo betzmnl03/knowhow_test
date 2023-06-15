@@ -1,0 +1,24 @@
+.favorites-container {
+  display: flex;
+  align-items: center;
+}
+
+.outer-container {
+  margin: 2%;
+}
+
+.back-arrow {
+  cursor: pointer;
+}
+
+.back-arrow svg {
+  width: 18px;
+  height: 18px;
+}
+
+.centered-text {
+  flex-grow: 1; /* Occupy remaining space */
+  text-align: center; /* Center the text horizontally */
+  font-weight: bold;
+  font-size: 18px;
+}

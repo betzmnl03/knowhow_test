@@ -6,6 +6,7 @@ import { giphyService } from '../services/giphyService';
 import "../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import { DEFAULT_OFFSET, ITEM_PER_PAGE } from '../constants/common';
+import { FAVORITES } from '../constants/routes';
 
 const Home = () => {
   const [gifs, setGifs] = useState([]);
@@ -63,8 +64,7 @@ const Home = () => {
   }
 
   const gotoSavedGifs = () => {
-    let path = `/favorites`;
-    navigate(path);
+    navigate(FAVORITES);
   }
 
   const renderPaginationButtons = () => {

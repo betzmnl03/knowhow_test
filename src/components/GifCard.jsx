@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { ReactComponent as FavoriteIconRegular } from '../assets/heart-regular.svg';
-import { ReactComponent as FavoriteIconSolid } from '../assets/heart-solid.svg';
+import React, { useState, useEffect } from "react";
 
 const GifCard = ({ gif ,handleFavoriteClick}) => {
   const { title, images, username, id} = gif;
@@ -20,9 +18,7 @@ const GifCard = ({ gif ,handleFavoriteClick}) => {
 
   return (
     <div className="gif-card">
-      <div className="favorite" onClick={handleClick} data-testid="favorite-icon">
-        {isFavorite ? <FavoriteIconSolid /> : <FavoriteIconRegular />}
-      </div>
+      <i className={`favorite ${isFavorite ? "fas" : "far"} fa-heart`} onClick={handleClick} data-testid="favorite-icon"></i>
       <img src={gifUrl} alt={title} className="gif-image" />
       <div className="title">{title}</div>
       <div className="username">{username}</div>

@@ -31,14 +31,14 @@ npm start
 │ └── ...
 ├── src/
 │ ├── components/
-│ │ ├── GifCard.js
-│ │ ├── GifsContainer.js
+│ │ ├── GifCard.jsx
+│ │ ├── GifsContainer.jsx
 │ │ └── ...
-│ ├── App.js
+│ ├── App.jsx
 │ ├── index.js
 │ ├── pages/
-│ │ ├── Home.js
-│ │ ├── Favorites.js
+│ │ ├── Home.jsx
+│ │ ├── Favorites.jsx
 │ │ └── ...
 ├── styles/
 │ │ ├── gifCard.css

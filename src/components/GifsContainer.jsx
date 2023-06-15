@@ -1,14 +1,16 @@
-import '../styles/gifsCard.css';
+import React from "react"
 import GifCard from "./GifCard";
 import { useLocation } from "react-router-dom";
 import { useState,useEffect } from "react";
+import '../styles/gifsCard.css';
+import { FAVORITES } from "../constants/routes";
 
 const GifsContainer = ({ gifs, setFavorites}) => {
 
   const [gifsList, setGifList] = useState(gifs);
     
   const location = useLocation();
-  const isFavoritePage = location.pathname === "/favorites";
+  const isFavoritePage = location.pathname === FAVORITES;
   
   const removeFavorites = (list, id) => {
     const updatedFavorites = list.filter(
@@ -48,7 +50,7 @@ const GifsContainer = ({ gifs, setFavorites}) => {
     <div>
       <div className="card-container">
         {gifsList.map((gif) => (
-          <div key={gif.id} className="card">
+          <div key={gif.id} className="card" data-testid="gif-card">
             <GifCard gif={gif} handleFavoriteClick={handleFavoriteClick}/>  
           </div>
         ))}

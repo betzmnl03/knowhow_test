@@ -1,27 +1,28 @@
 import { useEffect, useState } from 'react';
+import { useLocation, useNavigate} from 'react-router-dom';
 import GifsContainer from '../components/GifsContainer';
-import { ReactComponent as BackIcon } from '../assets/arrow-left-solid.svg';
+import { HOME } from '../constants/routes';
 import '../styles/favorites.css';
-import { useNavigate } from "react-router-dom";
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
-  const navigate = useNavigate()
-
+  const location = useLocation();
   useEffect(() => {
     const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(favorites);
   }, []);
-
+  let navigate = useNavigate();
   const goBack = () => {
-    navigate("/")
+    navigate(HOME);
   }
 
   return (
     <div className="outer-container">
       <div className="favorites-container">
-        <div className="back-arrow" onClick={goBack}>
-          <BackIcon />
+        <div className="back-arrow" onClick={ goBack}>
+         
+            <i className="fas fa-arrow-left"></i>
+         
         </div>
         <div className="centered-text">My Saved GIFS</div>
       </div>

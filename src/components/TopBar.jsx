@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/searchBar.css';
-import { ReactComponent as SearchIcon } from '../assets/search-solid.svg';
 
-
-
-const TopBar = ({ handleSearch, getTrendingGifs, gotoSavedGifs }) => {
+const TopBar = ({ handleSearch, gotoSavedGifs }) => {
   const [searchField, setSearchField] = useState('');
 
   const handleChange = (event) => {
@@ -15,7 +12,7 @@ const TopBar = ({ handleSearch, getTrendingGifs, gotoSavedGifs }) => {
     <div className="top-bar">
       <div className="search-bar">
         <div className="search-icon">
-          <SearchIcon />
+          <i className="fas fa-search"></i>
         </div>
         <input
           type="text"

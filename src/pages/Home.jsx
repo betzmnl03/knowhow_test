@@ -21,8 +21,12 @@ const Home = () => {
   };
 
   useEffect(() => {
-   getSearchGifs(DEFAULT_OFFSET)
+  if (searchField === "") {
+      getTrendingGifs(0);
+  }
+  else getSearchGifs(DEFAULT_OFFSET)
   }, [searchField])
+
   
   const getTrendingGifs = (offset) => {
     setSearchActive(false)
@@ -57,14 +61,6 @@ const Home = () => {
         setLoading(false);
       });
   }
-
-  
-  useEffect(() => {
-    if (gifs.length === 0) {
-      getTrendingGifs(0,12);
-    } 
-  }, []);
-  
 
   const gotoSavedGifs = () => {
     let path = `/favorites`;
@@ -107,7 +103,7 @@ const Home = () => {
           className={activePage === i ? "active" : ""}
           onClick={() => {
             const offset = (i - 1) * ITEM_PER_PAGE;
-            searchActive? getSearchGifs(offset,12): getTrendingGifs(offset, 12)
+            searchActive? getSearchGifs(offset): getTrendingGifs(offset)
           }}
         >
           {i}
@@ -121,7 +117,7 @@ const Home = () => {
           key="prev"
           onClick={() => {
             const offset = (startPage - 1) * ITEM_PER_PAGE;
-            searchActive ? getSearchGifs(offset, 12) : getTrendingGifs(offset, 12)
+            searchActive ? getSearchGifs(offset) : getTrendingGifs(offset)
           }
            
           }
@@ -138,7 +134,7 @@ const Home = () => {
           onClick={() =>
             {
             const offset = endPage * ITEM_PER_PAGE;
-              searchActive ? getSearchGifs(offset, 12) : getTrendingGifs(offset, 12)
+              searchActive ? getSearchGifs(offset) : getTrendingGifs(offset)
             }
            
           }

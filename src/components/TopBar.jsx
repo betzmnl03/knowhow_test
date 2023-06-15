@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/searchBar.css';
 import { ReactComponent as SearchIcon } from '../assets/search-solid.svg';
 
@@ -10,13 +10,6 @@ const TopBar = ({ handleSearch, getTrendingGifs, gotoSavedGifs }) => {
   const handleChange = (event) => {
     setSearchField(event.target.value);
   };
-
-  useEffect(() => {
-    // display trending gifs if search field is undefined
-    if (!searchField) {
-      getTrendingGifs();
-    }
-  }, [searchField]);
 
   return (
     <div className="top-bar">

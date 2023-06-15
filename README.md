@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# KnowHow React Test
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the KnowHow React Test Project! This README file will provide you with an overview of the project and guide you on how to set it up and use it effectively.
 
-## Available Scripts
+## Project Overview
 
-In the project directory, you can run:
+This project is a 2 page web application built using React, a popular JavaScript library for building user interfaces. It aims to provide a responsive and interactive website to search for different gifs and also create/delete favorites
 
-### `npm start`
+### Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To set up the project on your local machine, please follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository to your local machine using Git or download the ZIP file.
+2. Navigate to the project directory.
+   cd knowhow_test
+3. Install the dependencies by running the following command:
+   npm install
+4. Create a new file named .env in the root directory of the project.
+5. Open the .env.example file and copy the variable names.
+6. Paste the variable names and add the actual values from your vault or a secure source.
 
-### `npm test`
+### Usage
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To start the development server and run the project locally, use the following command:
+npm start
 
-### `npm run build`
+### Folder Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+├── public/
+│ ├── index.html
+│ └── ...
+├── src/
+│ ├── components/
+│ │ ├── GifCard.js
+│ │ ├── GifsContainer.js
+│ │ └── ...
+│ ├── App.js
+│ ├── index.js
+│ ├── pages/
+│ │ ├── Home.js
+│ │ ├── Favorites.js
+│ │ └── ...
+├── styles/
+│ │ ├── gifCard.css
+│ │ ├── loader.css
+│ │ └── ...
+│ └── ...
+├── package.json
+└── ...
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The `public` directory contains the static assets and the index.html file, which serves as the entry point for the application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The `src` directory is where you will find the React components, including the main App.js file.
 
-### `npm run eject`
+The `components` directory contains reusable components that can be used throughout the application.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The `pages` directory contains individual page components. Each page component represents a specific page or route in your application. For example, Home.js and Favorites.js represent the home page and the saved gifs page of the application, respectively.
 
 ### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To deploy the React project, need to build it first. Use the following command to create an optimized production-ready build:
+npm run build
 
-### `npm run build` fails to minify
+This command will create a build directory with all the necessary files. You can then deploy these files to your hosting provider or server.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Learn More
+
+Learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

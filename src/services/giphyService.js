@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GIPHY_SEARCH, GIPHY_TRENDING, ITEM_PER_PAGE } from '../constants/common';
 
 const API_KEY = process.env.REACT_APP_GIPHY_API_KEY;
-const BASE_URL = process.env.REACT_APP_GIPHY_BASE_URL;
+const BASE_URL = "https://api.giphy.com/v1/gifs"
 
 export const giphyService = {
   searchGifs: async (query, offset) => {

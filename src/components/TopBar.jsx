@@ -28,7 +28,9 @@ const TopBar = ({ handleSearch, gotoSavedGifs }) => {
       >
         Search for GIF
       </button>
-      <button className="saved-gifs-button" onClick={gotoSavedGifs}>My Saved Gifs</button>
+      <button className="saved-gifs-button" onClick={gotoSavedGifs}>
+        My Saved Gifs
+      </button>
     </div>
   );
 };

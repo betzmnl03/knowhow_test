@@ -1,47 +1,46 @@
 import { useEffect, useState } from 'react';
 import TopBar from '../components/TopBar';
-import GifsContainer from "../components/GifsContainer";
-import Loader from "../components/Loader"
+import GifsContainer from '../components/GifsContainer';
+import Loader from '../components/Loader';
 import { giphyService } from '../services/giphyService';
-import "../styles/home.css";
-import { useNavigate } from "react-router-dom";
+import '../styles/home.css';
+import { useNavigate } from 'react-router-dom';
 import { DEFAULT_OFFSET, ITEM_PER_PAGE } from '../constants/common';
 import { FAVORITES } from '../constants/routes';
 
 const Home = () => {
   const [gifs, setGifs] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [paginationOffset, setPaginationOffset] = useState(DEFAULT_OFFSET)
+  const [paginationOffset, setPaginationOffset] = useState(DEFAULT_OFFSET);
   const [totalPages, setTotalPages] = useState(0); // Total number of pages
-  const [searchActive, setSearchActive] = useState(false)
-  const [searchField, setSearchField] = useState("")
+  const [searchActive, setSearchActive] = useState(false);
+  const [searchField, setSearchField] = useState('');
   let navigate = useNavigate();
 
   const handleSearch = (field) => {
-    setSearchField(field)
+    setSearchField(field);
   };
 
   useEffect(() => {
-  if (searchField === "") {
+    if (searchField === '') {
       getTrendingGifs(0);
-  }
-  else getSearchGifs(DEFAULT_OFFSET)
-  }, [searchField])
+    } else getSearchGifs(DEFAULT_OFFSET);
+  }, [searchField]);
 
-  
   const getTrendingGifs = (offset) => {
-    setSearchActive(false)
+    setSearchActive(false);
     setLoading(true);
-    setSearchField("")
-    giphyService.trendingGifs(offset)
+    setSearchField('');
+    giphyService
+      .trendingGifs(offset)
       .then((result) => {
         setPaginationOffset(offset);
         setTotalPages(result.pagination.total_count);
-        setGifs(result.data)
-    }).finally(()=>setLoading(false))
+        setGifs(result.data);
+      })
+      .finally(() => setLoading(false));
 
-    setLoading(false)
-   
+    setLoading(false);
   };
 
   const getSearchGifs = (offset) => {
@@ -52,7 +51,7 @@ const Home = () => {
       .then((result) => {
         setGifs(result.data);
         setTotalPages(result.pagination.total_count);
-        setPaginationOffset(offset)
+        setPaginationOffset(offset);
       })
       .catch((error) => {
         setGifs([]);
@@ -61,19 +60,19 @@ const Home = () => {
       .finally(() => {
         setLoading(false);
       });
-  }
+  };
 
   const gotoSavedGifs = () => {
     navigate(FAVORITES);
-  }
+  };
 
   const renderPaginationButtons = () => {
     const maxButtons = 5; // Maximum number of pagination buttons to display
     const activePage = Math.floor(paginationOffset / ITEM_PER_PAGE) + 1;
     const numberOfPages = Math.ceil(totalPages / ITEM_PER_PAGE); // Assuming totalCount is the total number of items
-  
+
     let startPage, endPage;
-  
+
     if (numberOfPages <= maxButtons) {
       // If the total number of pages is less than or equal to the maximum number of buttons, display all pages
       startPage = 1;
@@ -94,75 +93,71 @@ const Home = () => {
         endPage = activePage + Math.ceil(maxButtons / 2) - 1;
       }
     }
-  
+
     const buttons = [];
     for (let i = startPage; i <= endPage; i++) {
       buttons.push(
         <button
           key={i}
-          className={activePage === i ? "active" : ""}
+          className={activePage === i ? 'active' : ''}
           onClick={() => {
             const offset = (i - 1) * ITEM_PER_PAGE;
-            searchActive? getSearchGifs(offset): getTrendingGifs(offset)
+            searchActive ? getSearchGifs(offset) : getTrendingGifs(offset);
           }}
         >
           {i}
         </button>
       );
     }
-  
+
     if (startPage > 1) {
       buttons.unshift(
         <button
           key="prev"
           onClick={() => {
             const offset = (startPage - 1) * ITEM_PER_PAGE;
-            searchActive ? getSearchGifs(offset) : getTrendingGifs(offset)
-          }
-           
-          }
+            searchActive ? getSearchGifs(offset) : getTrendingGifs(offset);
+          }}
         >
           &lt;&lt;
         </button>
       );
     }
-  
+
     if (endPage < numberOfPages) {
       buttons.push(
         <button
           key="next"
-          onClick={() =>
-            {
+          onClick={() => {
             const offset = endPage * ITEM_PER_PAGE;
-              searchActive ? getSearchGifs(offset) : getTrendingGifs(offset)
-            }
-           
-          }
+            searchActive ? getSearchGifs(offset) : getTrendingGifs(offset);
+          }}
         >
           &gt;&gt;
         </button>
       );
     }
-  
+
     return buttons;
   };
 
-
-
   return (
     <div>
-      <TopBar handleSearch={handleSearch} getTrendingGifs={getTrendingGifs} gotoSavedGifs={gotoSavedGifs} />
-      {loading ?
-        <Loader /> :
+      <TopBar
+        handleSearch={handleSearch}
+        getTrendingGifs={getTrendingGifs}
+        gotoSavedGifs={gotoSavedGifs}
+      />
+      {loading ? (
+        <Loader />
+      ) : (
         <>
-              <GifsContainer gifs={gifs}/>
-              {totalPages > 0 && (
-                <div className="pagination">
-                  {renderPaginationButtons()}
-                </div>
-              )}
+          <GifsContainer gifs={gifs} />
+          {totalPages > 0 && (
+            <div className="pagination">{renderPaginationButtons()}</div>
+          )}
         </>
-      }
+      )}
     </div>
   );
 };

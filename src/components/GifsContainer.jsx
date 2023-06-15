@@ -1,57 +1,56 @@
-import React from "react"
-import GifCard from "./GifCard";
-import { useLocation } from "react-router-dom";
-import { useState,useEffect } from "react";
+import React from 'react';
+import GifCard from './GifCard';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import '../styles/gifsCard.css';
-import { FAVORITES } from "../constants/routes";
+import { FAVORITES } from '../constants/routes';
 
-const GifsContainer = ({ gifs, setFavorites}) => {
-
+const GifsContainer = ({ gifs, setFavorites }) => {
   const [gifsList, setGifList] = useState(gifs);
-    
+
   const location = useLocation();
   const isFavoritePage = location.pathname === FAVORITES;
-  
+
   const removeFavorites = (list, id) => {
-    const updatedFavorites = list.filter(
-      (favorite) => favorite.id !== id
-    );
+    const updatedFavorites = list.filter((favorite) => favorite.id !== id);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    return updatedFavorites
-  }
+    return updatedFavorites;
+  };
 
   const handleFavoriteClick = (gif) => {
     if (isFavoritePage) {
-      const updatedGifs = removeFavorites(gifs, gif.id)
+      const updatedGifs = removeFavorites(gifs, gif.id);
       setGifList(updatedGifs);
-      setFavorites(updatedGifs)
+      setFavorites(updatedGifs);
     } else {
-      const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-      const isAlreadyFavorited = storedFavorites.find((item) => item.id === gif.id);
+      const storedFavorites =
+        JSON.parse(localStorage.getItem('favorites')) || [];
+      const isAlreadyFavorited = storedFavorites.find(
+        (item) => item.id === gif.id
+      );
       if (isAlreadyFavorited) {
-      // Remove from favorites
-      removeFavorites(storedFavorites, gif.id)
-      }
-      else {
-      // Add to favorites
-      const updatedFavorites = [...storedFavorites, gif];
-      localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+        // Remove from favorites
+        removeFavorites(storedFavorites, gif.id);
+      } else {
+        // Add to favorites
+        const updatedFavorites = [...storedFavorites, gif];
+        localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
       }
     }
-
   };
 
   useEffect(() => {
-   setGifList(gifs)
-  }, [gifs])
-  
-  if (!gifsList.length) return <p>No {isFavoritePage? "Saved GIFs":"GIFs Found" }</p>
+    setGifList(gifs);
+  }, [gifs]);
+
+  if (!gifsList.length)
+    return <p>No {isFavoritePage ? 'Saved GIFs' : 'GIFs Found'}</p>;
   return (
     <div>
       <div className="card-container">
         {gifsList.map((gif) => (
           <div key={gif.id} className="card" data-testid="gif-card">
-            <GifCard gif={gif} handleFavoriteClick={handleFavoriteClick}/>  
+            <GifCard gif={gif} handleFavoriteClick={handleFavoriteClick} />
           </div>
         ))}
       </div>
@@ -59,4 +58,4 @@ const GifsContainer = ({ gifs, setFavorites}) => {
   );
 };
 
-export default GifsContainer
+export default GifsContainer;

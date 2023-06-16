@@ -24,6 +24,11 @@ To set up the project on your local machine, please follow these steps:
 To start the development server and run the project locally, use the following command:
 npm start
 
+### Test
+
+To run the tests, use the following command:
+npm test
+
 ### Folder Structure
 
 ├── public/

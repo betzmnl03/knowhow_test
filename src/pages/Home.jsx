@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TopBar from '../components/TopBar';
 import GifsContainer from '../components/GifsContainer';
 import Loader from '../components/Loader';
@@ -35,7 +35,7 @@ const Home = () => {
       .trendingGifs(offset)
       .then((result) => {
         setPaginationOffset(offset);
-        setTotalPages(result.pagination.total_count);
+        setTotalPages(result?.pagination?.total_count);
         setGifs(result.data);
       })
       .finally(() => setLoading(false));
@@ -50,7 +50,7 @@ const Home = () => {
       .searchGifs(searchField, offset)
       .then((result) => {
         setGifs(result.data);
-        setTotalPages(result.pagination.total_count);
+        setTotalPages(result.pagination?.total_count);
         setPaginationOffset(offset);
       })
       .catch((error) => {

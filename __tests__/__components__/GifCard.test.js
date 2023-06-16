@@ -1,25 +1,17 @@
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import GifCard from "../../src/components/GifCard";
-import "@testing-library/jest-dom/extend-expect";
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+import GifCard from '../../src/components/GifCard';
+import '@testing-library/jest-dom/extend-expect';
+import { mockGifs } from '../__mocks__/testData';
 
-describe("GifCard", () => {
-  const gif = {
-    title: "Test GIF",
-    images: {
-      original: {
-        url: "https://example.com/test.gif",
-      },
-    },
-    username: "testuser",
-    id: "123",
-  };
+describe('GifCard', () => {
+  const gif = mockGifs[0];
 
-  it("renders the GIF title, image, and username", () => {
+  it('renders the GIF title, image, and username', () => {
     const { getByAltText, getByText } = render(<GifCard gif={gif} />);
-    expect(getByAltText("Test GIF")).toBeInTheDocument();
-    expect(getByText("Test GIF")).toBeInTheDocument();
-    expect(getByText("testuser")).toBeInTheDocument();
+    expect(getByAltText(gif.title)).toBeInTheDocument();
+    expect(getByText(gif.title)).toBeInTheDocument();
+    expect(getByText(gif.username)).toBeInTheDocument();
   });
 
   test('should change the favorite icon from regular to solid to  on click', () => {
@@ -42,10 +34,7 @@ describe("GifCard", () => {
     // Clicking on the favorite icon again should unfavorite it
     fireEvent.click(favoriteIcon);
 
-     // After clicking, the favorite icon should have 'far' class
+    // After clicking, the favorite icon should have 'far' class
     expect(favoriteIcon).toHaveClass('far');
-
   });
-
-  
 });

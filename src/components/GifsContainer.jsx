@@ -47,7 +47,7 @@ const GifsContainer = ({ gifs, setFavorites }) => {
     return <p>No {isFavoritePage ? 'Saved GIFs' : 'GIFs Found'}</p>;
   return (
     <div>
-      <div className="card-container">
+      <div className="card-container" data-testid="gifs-container">
         {gifsList.map((gif) => (
           <div key={gif.id} className="card" data-testid="gif-card">
             <GifCard gif={gif} handleFavoriteClick={handleFavoriteClick} />

@@ -1,6 +1,8 @@
 .favorites-container {
   display: flex;
   align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .outer-container {
@@ -21,4 +23,9 @@
   text-align: center; /* Center the text horizontally */
   font-weight: bold;
   font-size: 18px;
+}
+
+.gifs-container-fav {
+  padding: 8px 12px;
+  margin: 0 4px;
 }

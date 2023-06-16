@@ -14,8 +14,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Center content vertically */
-  text-align: center; /* Center text horizontally */
+  justify-content: center;
+  text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -29,7 +29,7 @@
 .gif-card::before {
   content: '';
   display: block;
-  height: 24px; /* Height of the favorite icon */
+  height: 24px;
 }
 
 .title {

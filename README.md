@@ -31,7 +31,7 @@ To run the tests, use the following command:\
 
 ### Folder Structure
 
-````bash
+```bash
 ├── public/
 │ ├── index.html
 │ └── ...
@@ -53,7 +53,6 @@ To run the tests, use the following command:\
 │ └── ...
 ├── package.json
 └── ...
-```bash
 
 The `public` directory contains the static assets and the index.html file, which serves as the entry point for the application.
 
@@ -75,4 +74,4 @@ This command will create a build directory with all the necessary files. You can
 Learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-````
+```

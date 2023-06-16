@@ -66,9 +66,7 @@ The `pages` directory contains individual page components. Each page component r
 ### Deployment
 
 To deploy the React project, need to build it first. Use the following command to create an optimized production-ready build:
-npm run build
-
-This command will create a build directory with all the necessary files. You can then deploy these files to your hosting provider or server.
+`npm run build`
 
 ## Learn More
 

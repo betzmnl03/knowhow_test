@@ -73,7 +73,3 @@ To deploy the React project, need to build it first. Use the following command t
 Learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-```
-
-```
